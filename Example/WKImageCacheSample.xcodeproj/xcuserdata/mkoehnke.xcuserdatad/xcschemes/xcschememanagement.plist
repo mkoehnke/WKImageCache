@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>WKImageCacheSample WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>WKImageCacheSample.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>BF08BAB11AF50BE700FB1C2D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF08BAC01AF50CB100FB1C2D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF08BACF1AF50CE200FB1C2D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFC0716D1AE95A000093F0F0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFC071821AE95A000093F0F0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFC071A31AE978090093F0F0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

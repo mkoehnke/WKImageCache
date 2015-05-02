@@ -7,25 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF9690C31AF578A000067FEF /* WKImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9690C21AF578A000067FEF /* WKImageCache.swift */; };
 		BFC071741AE95A000093F0F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC071731AE95A000093F0F0 /* AppDelegate.swift */; };
 		BFC071761AE95A000093F0F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC071751AE95A000093F0F0 /* ViewController.swift */; };
 		BFC071791AE95A000093F0F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFC071771AE95A000093F0F0 /* Main.storyboard */; };
 		BFC0717B1AE95A000093F0F0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFC0717A1AE95A000093F0F0 /* Images.xcassets */; };
 		BFC0717E1AE95A000093F0F0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFC0717C1AE95A000093F0F0 /* LaunchScreen.xib */; };
-		BFC0718A1AE95A000093F0F0 /* WKImageCacheSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC071891AE95A000093F0F0 /* WKImageCacheSampleTests.swift */; };
+		BFC0719F1AE978090093F0F0 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC0719E1AE978090093F0F0 /* InterfaceController.swift */; };
+		BFC071A11AE978090093F0F0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFC071A01AE978090093F0F0 /* Images.xcassets */; };
+		BFC071A51AE978090093F0F0 /* WKImageCacheSample WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = BFC071A41AE978090093F0F0 /* WKImageCacheSample WatchKit App.app */; };
+		BFC071AD1AE978090093F0F0 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFC071AB1AE978090093F0F0 /* Interface.storyboard */; };
+		BFC071AF1AE978090093F0F0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFC071AE1AE978090093F0F0 /* Images.xcassets */; };
+		BFC071B21AE978090093F0F0 /* WKImageCacheSample WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFC0719A1AE978090093F0F0 /* WKImageCacheSample WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BFC071841AE95A000093F0F0 /* PBXContainerItemProxy */ = {
+		BFC071A61AE978090093F0F0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFC071661AE95A000093F0F0 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BFC0716D1AE95A000093F0F0;
-			remoteInfo = WKImageCacheSample;
+			remoteGlobalIDString = BFC071A31AE978090093F0F0;
+			remoteInfo = "WKImageCacheSample WatchKit App";
+		};
+		BFC071B01AE978090093F0F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFC071661AE95A000093F0F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BFC071991AE978090093F0F0;
+			remoteInfo = "WKImageCacheSample WatchKit Extension";
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BFC071B91AE978090093F0F0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BFC071B21AE978090093F0F0 /* WKImageCacheSample WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		BF9690C01AF5788700067FEF /* WKImageCacheSample-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WKImageCacheSample-Bridging-Header.h"; sourceTree = "<group>"; };
+		BF9690C21AF578A000067FEF /* WKImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKImageCache.swift; sourceTree = "<group>"; };
 		BFC0716E1AE95A000093F0F0 /* WKImageCacheSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKImageCacheSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFC071721AE95A000093F0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFC071731AE95A000093F0F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,9 +62,14 @@
 		BFC071781AE95A000093F0F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFC0717A1AE95A000093F0F0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BFC0717D1AE95A000093F0F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		BFC071831AE95A000093F0F0 /* WKImageCacheSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WKImageCacheSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFC071881AE95A000093F0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BFC071891AE95A000093F0F0 /* WKImageCacheSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKImageCacheSampleTests.swift; sourceTree = "<group>"; };
+		BFC0719A1AE978090093F0F0 /* WKImageCacheSample WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WKImageCacheSample WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFC0719D1AE978090093F0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFC0719E1AE978090093F0F0 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		BFC071A01AE978090093F0F0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BFC071A41AE978090093F0F0 /* WKImageCacheSample WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WKImageCacheSample WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFC071AA1AE978090093F0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFC071AC1AE978090093F0F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		BFC071AE1AE978090093F0F0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +80,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BFC071801AE95A000093F0F0 /* Frameworks */ = {
+		BFC071971AE978090093F0F0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -56,11 +90,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF9690C11AF578A000067FEF /* WKImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				BF9690C21AF578A000067FEF /* WKImageCache.swift */,
+			);
+			name = WKImageCache;
+			path = ../WKImageCache;
+			sourceTree = "<group>";
+		};
 		BFC071651AE95A000093F0F0 = {
 			isa = PBXGroup;
 			children = (
+				BF9690C11AF578A000067FEF /* WKImageCache */,
+				BFC0719B1AE978090093F0F0 /* WKImageCacheSample WatchKit Extension */,
+				BFC071A81AE978090093F0F0 /* WKImageCacheSample WatchKit App */,
 				BFC071701AE95A000093F0F0 /* WKImageCacheSample */,
-				BFC071861AE95A000093F0F0 /* WKImageCacheSampleTests */,
 				BFC0716F1AE95A000093F0F0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,7 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				BFC0716E1AE95A000093F0F0 /* WKImageCacheSample.app */,
-				BFC071831AE95A000093F0F0 /* WKImageCacheSampleTests.xctest */,
+				BFC0719A1AE978090093F0F0 /* WKImageCacheSample WatchKit Extension.appex */,
+				BFC071A41AE978090093F0F0 /* WKImageCacheSample WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,19 +141,39 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BFC071861AE95A000093F0F0 /* WKImageCacheSampleTests */ = {
+		BFC0719B1AE978090093F0F0 /* WKImageCacheSample WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				BFC071891AE95A000093F0F0 /* WKImageCacheSampleTests.swift */,
-				BFC071871AE95A000093F0F0 /* Supporting Files */,
+				BF9690C01AF5788700067FEF /* WKImageCacheSample-Bridging-Header.h */,
+				BFC0719E1AE978090093F0F0 /* InterfaceController.swift */,
+				BFC071A01AE978090093F0F0 /* Images.xcassets */,
+				BFC0719C1AE978090093F0F0 /* Supporting Files */,
 			);
-			path = WKImageCacheSampleTests;
+			path = "WKImageCacheSample WatchKit Extension";
 			sourceTree = "<group>";
 		};
-		BFC071871AE95A000093F0F0 /* Supporting Files */ = {
+		BFC0719C1AE978090093F0F0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BFC071881AE95A000093F0F0 /* Info.plist */,
+				BFC0719D1AE978090093F0F0 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BFC071A81AE978090093F0F0 /* WKImageCacheSample WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				BFC071AB1AE978090093F0F0 /* Interface.storyboard */,
+				BFC071AE1AE978090093F0F0 /* Images.xcassets */,
+				BFC071A91AE978090093F0F0 /* Supporting Files */,
+			);
+			path = "WKImageCacheSample WatchKit App";
+			sourceTree = "<group>";
+		};
+		BFC071A91AE978090093F0F0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BFC071AA1AE978090093F0F0 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -122,33 +188,50 @@
 				BFC0716A1AE95A000093F0F0 /* Sources */,
 				BFC0716B1AE95A000093F0F0 /* Frameworks */,
 				BFC0716C1AE95A000093F0F0 /* Resources */,
+				BFC071B91AE978090093F0F0 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BFC071B11AE978090093F0F0 /* PBXTargetDependency */,
 			);
 			name = WKImageCacheSample;
 			productName = WKImageCacheSample;
 			productReference = BFC0716E1AE95A000093F0F0 /* WKImageCacheSample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BFC071821AE95A000093F0F0 /* WKImageCacheSampleTests */ = {
+		BFC071991AE978090093F0F0 /* WKImageCacheSample WatchKit Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BFC071901AE95A000093F0F0 /* Build configuration list for PBXNativeTarget "WKImageCacheSampleTests" */;
+			buildConfigurationList = BFC071B61AE978090093F0F0 /* Build configuration list for PBXNativeTarget "WKImageCacheSample WatchKit Extension" */;
 			buildPhases = (
-				BFC0717F1AE95A000093F0F0 /* Sources */,
-				BFC071801AE95A000093F0F0 /* Frameworks */,
-				BFC071811AE95A000093F0F0 /* Resources */,
+				BFC071961AE978090093F0F0 /* Sources */,
+				BFC071971AE978090093F0F0 /* Frameworks */,
+				BFC071981AE978090093F0F0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BFC071851AE95A000093F0F0 /* PBXTargetDependency */,
+				BFC071A71AE978090093F0F0 /* PBXTargetDependency */,
 			);
-			name = WKImageCacheSampleTests;
-			productName = WKImageCacheSampleTests;
-			productReference = BFC071831AE95A000093F0F0 /* WKImageCacheSampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			name = "WKImageCacheSample WatchKit Extension";
+			productName = "WKImageCacheSample WatchKit Extension";
+			productReference = BFC0719A1AE978090093F0F0 /* WKImageCacheSample WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		BFC071A31AE978090093F0F0 /* WKImageCacheSample WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFC071B31AE978090093F0F0 /* Build configuration list for PBXNativeTarget "WKImageCacheSample WatchKit App" */;
+			buildPhases = (
+				BFC071A21AE978090093F0F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WKImageCacheSample WatchKit App";
+			productName = "WKImageCacheSample WatchKit App";
+			productReference = BFC071A41AE978090093F0F0 /* WKImageCacheSample WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
 		};
 /* End PBXNativeTarget section */
 
@@ -162,9 +245,11 @@
 					BFC0716D1AE95A000093F0F0 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
-					BFC071821AE95A000093F0F0 = {
+					BFC071991AE978090093F0F0 = {
 						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = BFC0716D1AE95A000093F0F0;
+					};
+					BFC071A31AE978090093F0F0 = {
+						CreatedOnToolsVersion = 6.3.1;
 					};
 				};
 			};
@@ -182,7 +267,8 @@
 			projectRoot = "";
 			targets = (
 				BFC0716D1AE95A000093F0F0 /* WKImageCacheSample */,
-				BFC071821AE95A000093F0F0 /* WKImageCacheSampleTests */,
+				BFC071991AE978090093F0F0 /* WKImageCacheSample WatchKit Extension */,
+				BFC071A31AE978090093F0F0 /* WKImageCacheSample WatchKit App */,
 			);
 		};
 /* End PBXProject section */
@@ -198,10 +284,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BFC071811AE95A000093F0F0 /* Resources */ = {
+		BFC071981AE978090093F0F0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFC071A11AE978090093F0F0 /* Images.xcassets in Resources */,
+				BFC071A51AE978090093F0F0 /* WKImageCacheSample WatchKit App.app in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFC071A21AE978090093F0F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFC071AD1AE978090093F0F0 /* Interface.storyboard in Resources */,
+				BFC071AF1AE978090093F0F0 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,21 +314,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BFC0717F1AE95A000093F0F0 /* Sources */ = {
+		BFC071961AE978090093F0F0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFC0718A1AE95A000093F0F0 /* WKImageCacheSampleTests.swift in Sources */,
+				BF9690C31AF578A000067FEF /* WKImageCache.swift in Sources */,
+				BFC0719F1AE978090093F0F0 /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BFC071851AE95A000093F0F0 /* PBXTargetDependency */ = {
+		BFC071A71AE978090093F0F0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BFC0716D1AE95A000093F0F0 /* WKImageCacheSample */;
-			targetProxy = BFC071841AE95A000093F0F0 /* PBXContainerItemProxy */;
+			target = BFC071A31AE978090093F0F0 /* WKImageCacheSample WatchKit App */;
+			targetProxy = BFC071A61AE978090093F0F0 /* PBXContainerItemProxy */;
+		};
+		BFC071B11AE978090093F0F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BFC071991AE978090093F0F0 /* WKImageCacheSample WatchKit Extension */;
+			targetProxy = BFC071B01AE978090093F0F0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -250,6 +353,14 @@
 				BFC0717D1AE95A000093F0F0 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		BFC071AB1AE978090093F0F0 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFC071AC1AE978090093F0F0 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -294,6 +405,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -343,6 +455,7 @@
 				INFOPLIST_FILE = WKImageCacheSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -353,40 +466,65 @@
 				INFOPLIST_FILE = WKImageCacheSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
-		BFC071911AE95A000093F0F0 /* Debug */ = {
+		BFC071B41AE978090093F0F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = WKImageCacheSampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IBSC_MODULE = WKImageCacheSample_WatchKit_Extension;
+				INFOPLIST_FILE = "WKImageCacheSample WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WKImageCacheSample.app/WKImageCacheSample";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
 			};
 			name = Debug;
 		};
-		BFC071921AE95A000093F0F0 /* Release */ = {
+		BFC071B51AE978090093F0F0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				IBSC_MODULE = WKImageCacheSample_WatchKit_Extension;
+				INFOPLIST_FILE = "WKImageCacheSample WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
+		BFC071B71AE978090093F0F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = WKImageCacheSampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WKImageCacheSample.app/WKImageCacheSample";
+				INFOPLIST_FILE = "WKImageCacheSample WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "WKImageCacheSample WatchKit Extension/WKImageCacheSample-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		BFC071B81AE978090093F0F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "WKImageCacheSample WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "WKImageCacheSample WatchKit Extension/WKImageCacheSample-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -409,14 +547,25 @@
 				BFC0718F1AE95A000093F0F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		BFC071901AE95A000093F0F0 /* Build configuration list for PBXNativeTarget "WKImageCacheSampleTests" */ = {
+		BFC071B31AE978090093F0F0 /* Build configuration list for PBXNativeTarget "WKImageCacheSample WatchKit App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BFC071911AE95A000093F0F0 /* Debug */,
-				BFC071921AE95A000093F0F0 /* Release */,
+				BFC071B41AE978090093F0F0 /* Debug */,
+				BFC071B51AE978090093F0F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFC071B61AE978090093F0F0 /* Build configuration list for PBXNativeTarget "WKImageCacheSample WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFC071B71AE978090093F0F0 /* Debug */,
+				BFC071B81AE978090093F0F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

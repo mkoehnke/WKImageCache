@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WKImageCacheSample_WatchKit_Extension">
+                    <items>
+                        <label alignment="center" text="Adding Image to Cache" textAlignment="center" id="yKv-0D-B9m">
+                            <fontDescription key="font" type="system" pointSize="12"/>
+                        </label>
+                        <group width="1" alignment="left" verticalAlignment="center" spacing="5" id="e7Q-zo-oJl">
+                            <items>
+                                <button width="40" height="40" alignment="center" title="+" id="Qp1-BO-iDV">
+                                    <fontDescription key="font" type="system" pointSize="32"/>
+                                    <connections>
+                                        <action selector="button1Tapped" destination="AgC-eL-Hgc" id="a6N-xZ-CHZ"/>
+                                    </connections>
+                                </button>
+                                <button width="40" height="40" alignment="center" title="+" id="Sq4-e0-gBA">
+                                    <fontDescription key="font" type="system" pointSize="32"/>
+                                    <connections>
+                                        <action selector="button2Tapped" destination="AgC-eL-Hgc" id="4vM-Zj-t2B"/>
+                                    </connections>
+                                </button>
+                                <button width="40" height="40" alignment="center" title="+" id="ERh-KM-lQF">
+                                    <fontDescription key="font" type="system" pointSize="32"/>
+                                    <connections>
+                                        <action selector="button3Tapped" destination="AgC-eL-Hgc" id="swj-Z8-vPk"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" verticalAlignment="center" spacing="5" id="t0f-k4-PrH">
+                            <items>
+                                <button width="40" height="40" alignment="center" title="+" id="oKg-M4-lsH">
+                                    <fontDescription key="font" type="system" pointSize="32"/>
+                                    <connections>
+                                        <action selector="button4Tapped" destination="AgC-eL-Hgc" id="HOT-Aa-3S1"/>
+                                    </connections>
+                                </button>
+                                <button width="40" height="40" alignment="center" title="+" id="rq4-SB-X1f">
+                                    <fontDescription key="font" type="system" pointSize="32"/>
+                                    <connections>
+                                        <action selector="button5Tapped" destination="AgC-eL-Hgc" id="5vp-Kw-g24"/>
+                                    </connections>
+                                </button>
+                                <button width="40" height="40" alignment="center" title="+" id="wJQ-7M-JmQ">
+                                    <fontDescription key="font" type="system" pointSize="32"/>
+                                    <connections>
+                                        <action selector="button6Tapped" destination="AgC-eL-Hgc" id="lrD-TV-WcR"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" verticalAlignment="center" spacing="5" id="YoH-CM-c54">
+                            <items>
+                                <button width="40" height="40" alignment="center" title="+" id="piL-l8-XpH">
+                                    <fontDescription key="font" type="system" pointSize="32"/>
+                                    <connections>
+                                        <action selector="button7Tapped" destination="AgC-eL-Hgc" id="3qw-wW-2jc"/>
+                                    </connections>
+                                </button>
+                                <button width="40" height="40" alignment="center" title="+" id="khd-EV-3Pi">
+                                    <fontDescription key="font" type="system" pointSize="32"/>
+                                    <connections>
+                                        <action selector="button8Tapped" destination="AgC-eL-Hgc" id="3aJ-Np-hND"/>
+                                    </connections>
+                                </button>
+                                <button width="40" height="40" alignment="center" title="+" id="FBl-vo-f2G">
+                                    <fontDescription key="font" type="system" pointSize="32"/>
+                                    <connections>
+                                        <action selector="button9Tapped" destination="AgC-eL-Hgc" id="yKm-QQ-Vq9"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="button1" destination="Qp1-BO-iDV" id="wX9-EM-1eu"/>
+                        <outlet property="button2" destination="Sq4-e0-gBA" id="OIL-CU-lcK"/>
+                        <outlet property="button3" destination="ERh-KM-lQF" id="hha-Fi-kDg"/>
+                        <outlet property="button4" destination="oKg-M4-lsH" id="3CJ-4C-W7n"/>
+                        <outlet property="button5" destination="rq4-SB-X1f" id="cUB-t0-yfN"/>
+                        <outlet property="button6" destination="wJQ-7M-JmQ" id="XbB-Iv-wSZ"/>
+                        <outlet property="button7" destination="piL-l8-XpH" id="gQJ-bb-bN9"/>
+                        <outlet property="button8" destination="khd-EV-3Pi" id="mwU-Ey-iih"/>
+                        <outlet property="button9" destination="FBl-vo-f2G" id="Xdn-FK-nyT"/>
+                        <outlet property="label" destination="yKv-0D-B9m" id="93n-B7-w01"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="95" y="241"/>
+        </scene>
+    </scenes>
+</document>
