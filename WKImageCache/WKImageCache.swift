@@ -10,16 +10,20 @@ import WatchKit
 import Foundation
 import Darwin
 
+public enum CacheType {
+    case FIFO
+    case LRU
+}
+
+private let DefaultCacheType : CacheType = .FIFO
+
 public extension WKInterfaceImage {
-    public func setCachedImage(image : UIImage) {
-        let imageData = UIImageJPEGRepresentation(image, 0.6)
-        ImageCache.setCachedImageData(imageData, cachedBlock: { (key) -> Void in
-            self.setImageNamed(key)
-        })
+    public func setCachedImage(image : UIImage, compression : CGFloat = 0.6, cacheType : CacheType = DefaultCacheType) -> String {
+        return setCachedImageData(UIImageJPEGRepresentation(image, compression), cacheType: cacheType)
     }
     
-    public func setCachedImageData(imageData : NSData) {
-        ImageCache.setCachedImageData(imageData, cachedBlock: { (key) -> Void in
+    public func setCachedImageData(imageData : NSData, cacheType : CacheType = DefaultCacheType) -> String {
+        return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { (key) -> Void in
             self.setImageNamed(key)
         })
     }
@@ -32,15 +36,12 @@ public extension WKInterfaceImage {
 
 public extension WKInterfaceButton {
     
-    public func setCachedBackgroundImage(image : UIImage) -> String {
-        let imageData = UIImageJPEGRepresentation(image, 0.6)
-        return ImageCache.setCachedImageData(imageData, cachedBlock: { (key) -> Void in
-            self.setBackgroundImageNamed(key)
-        })
+    public func setCachedBackgroundImage(image : UIImage, compression : CGFloat = 0.6, cacheType : CacheType = DefaultCacheType) -> String {
+        return setCachedBackgroundImageData(UIImageJPEGRepresentation(image, compression), cacheType: cacheType)
     }
     
-    public func setCachedBackgroundImageData(imageData : NSData) -> String {
-        return ImageCache.setCachedImageData(imageData, cachedBlock: { (key) -> Void in
+    public func setCachedBackgroundImageData(imageData : NSData, cacheType : CacheType = DefaultCacheType) -> String {
+        return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { (key) -> Void in
             self.setBackgroundImageNamed(key)
         })
     }
@@ -52,18 +53,13 @@ public extension WKInterfaceButton {
 
 private class ImageCache {
     
-    private enum CacheStrategy {
-        case FIFO
-        case LRU
-    }
-    
-    private static var cacheStrategy : CacheStrategy = .FIFO
-    
-    private class func setCachedImageData(imageData : NSData, cachedBlock: (key : String) -> Void) -> String {
+    private class func setCachedImageData(imageData : NSData, cacheType : CacheType, cachedBlock: (key : String) -> Void) -> String {
+        ImageCache.cacheType = cacheType
+        
         let imageKey = imageData.MD5() as String
         if (ImageCache.imageExists(imageKey)) {
             cachedBlock(key : imageKey)
-            if (ImageCache.cacheStrategy == .LRU) {
+            if (ImageCache.cacheType == .LRU) {
                 ImageCache.addTimeStamp(NSDate().timeIntervalSinceReferenceDate, key: imageKey)
             }
         } else {
@@ -106,9 +102,9 @@ private class ImageCache {
                 }
                 
                 if (success == false) {
-                    self.removeImageWithCacheStrategy(self.cacheStrategy)
+                    self.removeImageWithCacheStrategy(self.cacheType)
                     
-                    // There seems to be a race condition when bulk adding/removing images 
+                    // There seems to be a race condition in the WatchKit code when bulk adding/removing images
                     // especially with the same name. Therefore this delay as a workaround.
                     usleep(400000)
                 }
@@ -122,8 +118,8 @@ private class ImageCache {
         WKInterfaceDevice.currentDevice().removeCachedImageWithName(key)
     }
     
-    private class func removeImageWithCacheStrategy(strategy : CacheStrategy) {
-        if contains([.FIFO, .LRU], strategy) {
+    private class func removeImageWithCacheStrategy(cacheType : CacheType) {
+        if contains([.FIFO, .LRU], cacheType) {
             var imageName : String?
             var imageTimeStamp : NSTimeInterval = 0.0
             for (key, timestamp) in getTimeStamps() {
@@ -144,6 +140,7 @@ private class ImageCache {
         }
     }
     
+    private static var cacheType : CacheType = DefaultCacheType
     private static let cacheKey = "de.mathiaskoehnke.wkimagecache"
     private static let lockQueue = dispatch_queue_create(cacheKey, nil)
     private static var timeStamps : NSMutableDictionary?
