@@ -31,18 +31,17 @@ public enum CacheType {
 }
 
 private let DefaultCacheType : CacheType = .FIFO
+private let DefaultCompression : CGFloat = 0.6
 
 public extension WKInterfaceImage {
-    public func setCachedImage(image : UIImage, compression : CGFloat = 0.6, cacheType : CacheType = DefaultCacheType) -> String {
+    public func setCachedImage(image : UIImage, compression : CGFloat = DefaultCompression, cacheType : CacheType = DefaultCacheType) -> String {
         return setCachedImageData(UIImageJPEGRepresentation(image, compression), cacheType: cacheType)
     }
-    
     public func setCachedImageData(imageData : NSData, cacheType : CacheType = DefaultCacheType) -> String {
         return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { (key) -> Void in
             self.setImageNamed(key)
         })
     }
-    
     public class func cachedImages() -> [NSObject : AnyObject] {
         return WKInterfaceDevice.currentDevice().cachedImages
     }
@@ -50,21 +49,33 @@ public extension WKInterfaceImage {
 
 
 public extension WKInterfaceButton {
-    
-    public func setCachedBackgroundImage(image : UIImage, compression : CGFloat = 0.6, cacheType : CacheType = DefaultCacheType) -> String {
+    public func setCachedBackgroundImage(image : UIImage, compression : CGFloat = DefaultCompression, cacheType : CacheType = DefaultCacheType) -> String {
         return setCachedBackgroundImageData(UIImageJPEGRepresentation(image, compression), cacheType: cacheType)
     }
-    
     public func setCachedBackgroundImageData(imageData : NSData, cacheType : CacheType = DefaultCacheType) -> String {
         return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { (key) -> Void in
             self.setBackgroundImageNamed(key)
         })
     }
-    
     public class func cachedImages() -> [NSObject : AnyObject] {
         return WKInterfaceDevice.currentDevice().cachedImages
     }
 }
+
+public extension WKInterfaceGroup {
+    public func setCachedBackgroundImage(image : UIImage, compression : CGFloat = DefaultCompression, cacheType : CacheType = DefaultCacheType) -> String {
+        return setCachedBackgroundImageData(UIImageJPEGRepresentation(image, compression), cacheType: cacheType)
+    }
+    public func setCachedBackgroundImageData(imageData : NSData, cacheType : CacheType = DefaultCacheType) -> String {
+        return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { (key) -> Void in
+            self.setBackgroundImageNamed(key)
+        })
+    }
+    public class func cachedImages() -> [NSObject : AnyObject] {
+        return WKInterfaceDevice.currentDevice().cachedImages
+    }
+}
+
 
 private class ImageCache {
     
