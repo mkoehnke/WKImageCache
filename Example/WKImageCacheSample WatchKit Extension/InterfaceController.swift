@@ -1,10 +1,26 @@
 //
-//  InterfaceController.swift
-//  WKImageCacheSample WatchKit Extension
+// InterfaceController.swift
 //
-//  Created by Mathias Köhnke on 23/04/15.
-//  Copyright (c) 2015 Mathias Koehnke. All rights reserved.
+// Copyright (c) 2015 Mathias Koehnke (http://www.mathiaskoehnke.com)
 //
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
 
 import WatchKit
 import Foundation
@@ -23,42 +39,31 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet weak var button9: WKInterfaceButton!
     @IBOutlet weak var label: WKInterfaceLabel!
     
-    var caching : [WKInterfaceButton : String] = [WKInterfaceButton : String]()
-    let pictureBaseName = "picture"
+    var cacheKeys = [WKInterfaceButton : String]()
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        let debugCacheSize = NSProcessInfo.processInfo().environment["DEBUG_CACHE_SIZE"] as! String
-        setTitle("Cache: \(debugCacheSize)")
+        setTitle("Cache: " + (NSProcessInfo.processInfo().environment["DEBUG_CACHE_SIZE"] as! String))
     }
     
     override func willActivate() {
         super.willActivate()
-        
         for (index, button) in enumerate(self.buttons()) {
             delay(Double(index) * 0.5) {
-                let imageName = "\(self.pictureBaseName)\(index + 1)"
-                let cacheKey = button.setCachedBackgroundImage(UIImage(named: imageName)!)
-                self.caching[button] = cacheKey
+                self.cacheKeys[button] = button.setCachedBackgroundImage(self.imageForIndex(index))
                 self.updateAppearance()
-                
                 if (index == self.buttons().count - 1) {
                     self.label.setHidden(true)
                 }
             }
         }
     }
-
-    func buttons() -> [WKInterfaceButton] {
-        return [button1, button2, button3, button4, button5, button6, button7, button8, button9]
-    }
     
     func updateAppearance() {
         let cachedImages = WKInterfaceButton.cachedImages()
-        let keys = cachedImages.keys
         for (index, button) in enumerate(buttons()) {
-            let key = self.caching[button]
-            if let _key = key, val: AnyObject = cachedImages[_key] {
+            let key = self.cacheKeys[button]
+            if let key = key, val: AnyObject = cachedImages[key] {
                 button.setTitle("")
                 button.setEnabled(false)
             } else {
@@ -70,8 +75,9 @@ class InterfaceController: WKInterfaceController {
 
     func buttonTapped(button : WKInterfaceButton) {
         label.setHidden(false)
+        
         let index = find(self.buttons(), button)
-        caching[button] = button.setCachedBackgroundImage(UIImage(named: "\(pictureBaseName)\(index! + 1)")!)
+        cacheKeys[button] = button.setCachedBackgroundImage(imageForIndex(index!))
         updateAppearance()
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -79,13 +85,17 @@ class InterfaceController: WKInterfaceController {
         })
     }
     
+    func imageForIndex(index : Int) -> UIImage {
+        let imageName = "picture" + String(index + 1)
+        return UIImage(named: imageName)!
+    }
+    
+    func buttons() -> [WKInterfaceButton] {
+        return [button1, button2, button3, button4, button5, button6, button7, button8, button9]
+    }
+    
     private func delay(delay:Double, closure:()->()) {
-        dispatch_after(
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(delay * Double(NSEC_PER_SEC))
-            ),
-            dispatch_get_main_queue(), closure)
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,Int64(delay * Double(NSEC_PER_SEC))),dispatch_get_main_queue(), closure)
     }
     
     @IBAction func button1Tapped() { buttonTapped(button1) }

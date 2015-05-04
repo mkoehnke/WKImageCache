@@ -1,10 +1,25 @@
 //
-//  WKCachedInterfaceImage.swift
-//  WKImageCacheSample
+// WKImageCache.swift
 //
-//  Created by Mathias Köhnke on 23/04/15.
-//  Copyright (c) 2015 Mathias Koehnke. All rights reserved.
+// Copyright (c) 2015 Mathias Koehnke (http://www.mathiaskoehnke.com)
 //
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
 import WatchKit
 import Foundation
@@ -16,18 +31,17 @@ public enum CacheType {
 }
 
 private let DefaultCacheType : CacheType = .FIFO
+private let DefaultCompression : CGFloat = 0.6
 
 public extension WKInterfaceImage {
-    public func setCachedImage(image : UIImage, compression : CGFloat = 0.6, cacheType : CacheType = DefaultCacheType) -> String {
+    public func setCachedImage(image : UIImage, compression : CGFloat = DefaultCompression, cacheType : CacheType = DefaultCacheType) -> String {
         return setCachedImageData(UIImageJPEGRepresentation(image, compression), cacheType: cacheType)
     }
-    
     public func setCachedImageData(imageData : NSData, cacheType : CacheType = DefaultCacheType) -> String {
         return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { (key) -> Void in
             self.setImageNamed(key)
         })
     }
-    
     public class func cachedImages() -> [NSObject : AnyObject] {
         return WKInterfaceDevice.currentDevice().cachedImages
     }
@@ -35,21 +49,33 @@ public extension WKInterfaceImage {
 
 
 public extension WKInterfaceButton {
-    
-    public func setCachedBackgroundImage(image : UIImage, compression : CGFloat = 0.6, cacheType : CacheType = DefaultCacheType) -> String {
+    public func setCachedBackgroundImage(image : UIImage, compression : CGFloat = DefaultCompression, cacheType : CacheType = DefaultCacheType) -> String {
         return setCachedBackgroundImageData(UIImageJPEGRepresentation(image, compression), cacheType: cacheType)
     }
-    
     public func setCachedBackgroundImageData(imageData : NSData, cacheType : CacheType = DefaultCacheType) -> String {
         return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { (key) -> Void in
             self.setBackgroundImageNamed(key)
         })
     }
-    
     public class func cachedImages() -> [NSObject : AnyObject] {
         return WKInterfaceDevice.currentDevice().cachedImages
     }
 }
+
+public extension WKInterfaceGroup {
+    public func setCachedBackgroundImage(image : UIImage, compression : CGFloat = DefaultCompression, cacheType : CacheType = DefaultCacheType) -> String {
+        return setCachedBackgroundImageData(UIImageJPEGRepresentation(image, compression), cacheType: cacheType)
+    }
+    public func setCachedBackgroundImageData(imageData : NSData, cacheType : CacheType = DefaultCacheType) -> String {
+        return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { (key) -> Void in
+            self.setBackgroundImageNamed(key)
+        })
+    }
+    public class func cachedImages() -> [NSObject : AnyObject] {
+        return WKInterfaceDevice.currentDevice().cachedImages
+    }
+}
+
 
 private class ImageCache {
     
@@ -104,7 +130,7 @@ private class ImageCache {
                 if (success == false) {
                     self.removeImageWithCacheStrategy(self.cacheType)
                     
-                    // There seems to be a race condition in the WatchKit code when bulk adding/removing images
+                    // There seems to be a race condition in the WatchKit cache during bulk adding/removing images
                     // especially with the same name. Therefore this delay as a workaround.
                     usleep(400000)
                 }
@@ -141,7 +167,7 @@ private class ImageCache {
     }
     
     private static var cacheType : CacheType = DefaultCacheType
-    private static let cacheKey = "de.mathiaskoehnke.wkimagecache"
+    private static let cacheKey = "com.mathiaskoehnke.wkimagecache"
     private static let lockQueue = dispatch_queue_create(cacheKey, nil)
     private static var timeStamps : NSMutableDictionary?
     
