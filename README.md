@@ -38,7 +38,12 @@ If the image is available as NSData, use this function:
 interfaceImage.setCachedImageData(data)
 ```
 
-The functions for WKInterfaceButton and WKInterfaceGroup are called *setCachedBackgroundImage(image : UIImage)* and *setCachedBackgroundImageData(image : UIImage)* and work equally.
+The functions for WKInterfaceButton and WKInterfaceGroup are called 
+
+- *setCachedBackgroundImage(image : UIImage)* 
+- *setCachedBackgroundImageData(image : UIImage)* 
+
+and work equally.
 
 # License
 WKImageCache is available under the MIT license. See the LICENSE file for more info.
