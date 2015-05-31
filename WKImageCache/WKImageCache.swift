@@ -25,57 +25,163 @@ import WatchKit
 import Foundation
 import Darwin
 
+/**
+Supported Cache Types
+
+- FIFO: First In First Out
+- LRU:  Least Recently Used
+*/
 public enum CacheType {
     case FIFO
     case LRU
 }
 
-private let DefaultCacheType : CacheType = .FIFO
-private let DefaultCompression : CGFloat = 0.6
-
+/**
+*  WKInterfaceImage extension
+*/
 public extension WKInterfaceImage {
+    /**
+    Sets the displayed image using the specified image object and adds it to 
+    the cache (if it not already exists).
+    
+    :param: image       The image to be displayed and added to the cache.
+    :param: compression The compression that is applied to the image before transmitting it to the  watch.
+                        If not specified, the default (60%) will be used.
+    :param: cacheType   The cache strategy that will be used to free space if the cache is full.
+                        If not specified, the default (FIFO) will be used.
+    
+    :returns: The key name under which the image is stored in the cache.
+    */
     public func setCachedImage(image : UIImage, compression : CGFloat = DefaultCompression, cacheType : CacheType = DefaultCacheType) -> String {
         return setCachedImageData(UIImageJPEGRepresentation(image, compression), cacheType: cacheType)
     }
+    /**
+    Sets the displayed image using a formatted data object and adds it to
+    the cache (if it not already exists).
+    
+    :param: image       A data object containing the image data in its native format. 
+                        The data can be raw image data or an archived UIImage object.
+    :param: compression The compression that is applied to the image before transmitting it to the  watch.
+                        If not specified, the default (60%) will be used.
+    :param: cacheType   The cache strategy that will be used to free space if the cache is full.
+                        If not specified, the default (FIFO) will be used.
+    
+    :returns: The key name under which the image is stored in the cache.
+    */
     public func setCachedImageData(imageData : NSData, cacheType : CacheType = DefaultCacheType) -> String {
         return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { (key) -> Void in
             self.setImageNamed(key)
         })
     }
+    /**
+    Returns a dictionary of cached image identifiers and corresponding images.
+    
+    :returns: A dictionary
+    */
     public class func cachedImages() -> [NSObject : AnyObject] {
         return WKInterfaceDevice.currentDevice().cachedImages
     }
 }
 
-
+/**
+*  WKInterfaceButton extension
+*/
 public extension WKInterfaceButton {
+    /**
+    Changes the button’s background image to the specified image and adds it to
+    the cache (if it not already exists).
+    
+    :param: image       The image to be displayed and added to the cache.
+    :param: compression The compression that is applied to the image before transmitting it to the  watch.
+                        If not specified, the default (60%) will be used.
+    :param: cacheType   The cache strategy that will be used to free space if the cache is full.
+                        If not specified, the default (FIFO) will be used.
+    
+    :returns: The key name under which the image is stored in the cache.
+    */
     public func setCachedBackgroundImage(image : UIImage, compression : CGFloat = DefaultCompression, cacheType : CacheType = DefaultCacheType) -> String {
         return setCachedBackgroundImageData(UIImageJPEGRepresentation(image, compression), cacheType: cacheType)
     }
+    /**
+    Changes the button’s background image to the image in the specified data object and adds it to
+    the cache (if it not already exists).
+    
+    :param: image       A data object containing the image data in its native format.
+                        The data can be raw image data or an archived UIImage object.
+    :param: compression The compression that is applied to the image before transmitting it to the  watch.
+                        If not specified, the default (60%) will be used.
+    :param: cacheType   The cache strategy that will be used to free space if the cache is full.
+                        If not specified, the default (FIFO) will be used.
+    
+    :returns: The key name under which the image is stored in the cache.
+    */
     public func setCachedBackgroundImageData(imageData : NSData, cacheType : CacheType = DefaultCacheType) -> String {
         return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { (key) -> Void in
             self.setBackgroundImageNamed(key)
         })
     }
+    /**
+    Returns a dictionary of cached image identifiers and corresponding images.
+    
+    :returns: A dictionary
+    */
     public class func cachedImages() -> [NSObject : AnyObject] {
         return WKInterfaceDevice.currentDevice().cachedImages
     }
 }
 
+/**
+*  WKInterfaceGroup extension
+*/
 public extension WKInterfaceGroup {
+    /**
+    Changes the background image of the group container to the specified image and adds it to
+    the cache (if it not already exists).
+    
+    :param: image       The image to be displayed and added to the cache.
+    :param: compression The compression that is applied to the image before transmitting it to the  watch.
+                        If not specified, the default (60%) will be used.
+    :param: cacheType   The cache strategy that will be used to free space if the cache is full.
+                        If not specified, the default (FIFO) will be used.
+    
+    :returns: The key name under which the image is stored in the cache.
+    */
     public func setCachedBackgroundImage(image : UIImage, compression : CGFloat = DefaultCompression, cacheType : CacheType = DefaultCacheType) -> String {
         return setCachedBackgroundImageData(UIImageJPEGRepresentation(image, compression), cacheType: cacheType)
     }
+    /**
+    Changes the background image of the group container to the image in the specified data object and adds it to
+    the cache (if it not already exists).
+    
+    :param: image       A data object containing the image data in its native format.
+                        The data can be raw image data or an archived UIImage object.
+    :param: compression The compression that is applied to the image before transmitting it to the  watch.
+                        If not specified, the default (60%) will be used.
+    :param: cacheType   The cache strategy that will be used to free space if the cache is full.
+                        If not specified, the default (FIFO) will be used.
+    
+    :returns: The key name under which the image is stored in the cache.
+    */
     public func setCachedBackgroundImageData(imageData : NSData, cacheType : CacheType = DefaultCacheType) -> String {
         return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { (key) -> Void in
             self.setBackgroundImageNamed(key)
         })
     }
+    /**
+    Returns a dictionary of cached image identifiers and corresponding images.
+    
+    :returns: A dictionary
+    */
     public class func cachedImages() -> [NSObject : AnyObject] {
         return WKInterfaceDevice.currentDevice().cachedImages
     }
 }
 
+
+// MARK: Private
+
+private let DefaultCacheType : CacheType = .FIFO
+private let DefaultCompression : CGFloat = 0.6
 
 private class ImageCache {
     
