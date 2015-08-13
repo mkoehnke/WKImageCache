@@ -69,8 +69,8 @@ public extension WKInterfaceImage {
     :returns: The key name under which the image is stored in the cache.
     */
     public func setCachedImageData(imageData : NSData, cacheType : CacheType = DefaultCacheType) -> String {
-        return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { (key) -> Void in
-            self.setImageNamed(key)
+        return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { [weak self] key in
+            self?.setImageNamed(key)
         })
     }
     /**
@@ -116,8 +116,8 @@ public extension WKInterfaceButton {
     :returns: The key name under which the image is stored in the cache.
     */
     public func setCachedBackgroundImageData(imageData : NSData, cacheType : CacheType = DefaultCacheType) -> String {
-        return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { (key) -> Void in
-            self.setBackgroundImageNamed(key)
+        return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { [weak self] key in
+            self?.setBackgroundImageNamed(key)
         })
     }
     /**
@@ -163,8 +163,8 @@ public extension WKInterfaceGroup {
     :returns: The key name under which the image is stored in the cache.
     */
     public func setCachedBackgroundImageData(imageData : NSData, cacheType : CacheType = DefaultCacheType) -> String {
-        return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { (key) -> Void in
-            self.setBackgroundImageNamed(key)
+        return ImageCache.setCachedImageData(imageData, cacheType: cacheType, cachedBlock: { [weak self] key in
+            self?.setBackgroundImageNamed(key)
         })
     }
     /**
