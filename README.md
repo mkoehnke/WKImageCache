@@ -1,4 +1,7 @@
 # WKImageCache
+
+### UPDATE: WKImageCache was originally written for watchOS 1.0. I'm no longer using it in any project, but will still accept pull requests for improvements.
+
 For images you create in your WatchKit extension but use frequently, Apple recommends caching those images on the device and refer to them by name. There are some basic functions like **addCachedImage:name:** or **removeCachedImageWithName:** to manage this. This is nice, but you have to take care of removing old images to free up a full cache (about 5MB per app) all by yourself. 
 
 The WKImageCache doesn't replace that cache, it's merely a simple wrapper that tries to solve this problem. If the user wants to add a new image and the cache is full, the WKImageCache automatically removes previous images based on currently two strategies, **FIFO** and **LRU**.
